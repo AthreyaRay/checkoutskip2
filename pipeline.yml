@@ -1,2 +1,2 @@
 steps:
-- command: echo "hi"
+- command: echo "hi there"
