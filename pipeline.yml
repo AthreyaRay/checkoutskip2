@@ -9,12 +9,17 @@
 #     buildkite-agent annotate --context "append-test" --append "<br /> This is append test completed"
 
 #   plugins:
+# steps:
+# - command: "yarn install; yarn run test"
+#   env:
+#     MY_SPECIAL_BUT_PUBLIC_VALUE: kittens
+#   plugins:
+#   - docker#v5.11.0:
+#       image: "node:7"
+#       always-pull: true
+#       propagate-environment: true
+
 steps:
-- command: "yarn install; yarn run test"
-  env:
-    MY_SPECIAL_BUT_PUBLIC_VALUE: kittens
+- command: make
   plugins:
-  - docker#v5.11.0:
-      image: "node:7"
-      always-pull: true
-      propagate-environment: true
+  - thedyrt/git-commit#v0.3.0: ~
