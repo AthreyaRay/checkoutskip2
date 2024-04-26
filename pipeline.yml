@@ -1,5 +1,7 @@
 steps:
 - command: echo "hi there! 1234567891133qwerertyutrertsssssssssy"
-- command: buildkite-agent annotate --context "append test" "<img src="https://upload.wikimedia.org/wikipedia/commons/1/16/HDRI_Sample_Scene_Balls_%28JPEG-HDR%29.jpg"> This is a test /n "
-- command: buildkite-agent annotate --context "append test"  --append "/n This is append test"
-- command: buildkite-agent annotate --context "append test"  --append "/n This is append test completed"
+- commands:
+- |
+  buildkite-agent annotate --context "append-test" --style 'info' "<img src=\"https://upload.wikimedia.org/wikipedia/commons/1/16/HDRI_Sample_Scene_Balls_%28JPEG-HDR%29.jpg\" style=\"width: 38px; height: 38px;\"> This is a test <br />"
+  buildkite-agent annotate --context "append test"  --append "/n This is append test"
+  buildkite-agent annotate --context "append test"  --append "/n This is append test completed"
