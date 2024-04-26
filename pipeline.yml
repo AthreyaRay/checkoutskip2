@@ -1,4 +1,4 @@
 steps:
 - command: echo "hi there! 1234567891133qwerertyutrertsssssssssy"
-- command: buildkite-agent annotate "<img src="https://www.pinterest.ca/pin/007-logo--488007309629361804"> Ths is a test "
+- command: buildkite-agent annotate "<img src="https://www.dpreview.com/sample-galleries/1330372094/fujifilm-x-a3-samples"> Ths is a test "
 
