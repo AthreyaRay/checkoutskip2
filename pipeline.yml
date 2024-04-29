@@ -20,4 +20,4 @@
 #       propagate-environment: true
 
 steps:
-- command: buildkite-agent artifact download "*.*"
+- command: buildkite-agent artifact download . "*.*"
