@@ -21,5 +21,4 @@
 
 steps:
 - command: make
-  plugins:
-  - thedyrt/git-commit#v0.3.0: ~
+  buildkite-agent artifact download "."
