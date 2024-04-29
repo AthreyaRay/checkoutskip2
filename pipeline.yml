@@ -20,5 +20,4 @@
 #       propagate-environment: true
 
 steps:
-- command: make
-  buildkite-agent artifact download "."
+- command: buildkite-agent artifact download "."
