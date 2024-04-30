@@ -6,11 +6,10 @@ env:
   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
 
 steps:
-- label: "Perform task every 10 seconds for 1 minute"
+- label: "Graceful Termination Test"
   command: |
-    for i in {1..6}
-    do
-       echo "Task $i"
-       sleep 10
-    done
+    trap "echo 'Received SIGTERM, starting graceful shutdown...'; sleep 90; echo 'Graceful shutdown complete.'" SIGTERM
+    echo "Starting long-running process..."
+    sleep 300
+    echo "Long-running process completed."
 
