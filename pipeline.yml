@@ -3,7 +3,7 @@ env:
   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
   BUILDKITE_ARTIFACTORY_USER: 'athreya'
   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
-  BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
+  $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
 
 steps:
 - command: cat test-download.txt
