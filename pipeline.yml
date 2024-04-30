@@ -11,4 +11,3 @@ steps:
       download:
       - from: "test.txt"
         to: "test-download.txt"
-        build: "018f2f87-2e5f-4ae2-aec6-c548c5be7ad1"
