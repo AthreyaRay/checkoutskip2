@@ -6,4 +6,11 @@ env:
   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
 
 steps:
-- command: ping www.google.com
+- label: "Perform task every 10 seconds for 1 minute"
+  command: |
+    for i in {1..6}
+    do
+       echo "Task $i"
+       sleep 10
+    done
+
