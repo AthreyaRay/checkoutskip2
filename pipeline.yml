@@ -8,8 +8,8 @@ env:
 steps:
 - label: "Graceful Termination Test"
   command: |
-    trap "echo 'Received SIGTERM, starting graceful shutdown... check'; sleep 90; echo 'Graceful shutdown complete.'" SIGTERM
-    echo "Starting long-running process..."
-    sleep 300
+    trap "echo 'This command indicates that we Received a SIGTERM and Ideally we should starting graceful shutdown... check the signal time from here'; sleep 90; echo 'Graceful shutdown complete.'" SIGTERM
+    echo "SSatrting a process that runs for 90 seconds to check"
+    sleep 90
     echo "Long-running process completed."
 
