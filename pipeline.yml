@@ -5,7 +5,10 @@ env:
   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
 
 steps:
-- command: echo "hello world" > test.txt
+- command: cat test-download.txt
   plugins:
   - artifacts#v1.9.3:
-      upload: "test.txt"
+      download:
+      - from: "test.txt"
+        to: "test-download.txt"
+        build: "018f2f87-2e5f-4ae2-aec6-c548c5be7ad1"
