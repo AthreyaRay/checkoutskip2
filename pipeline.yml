@@ -1,5 +1,5 @@
 env:
-  BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/test.txt'
+  BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1'
   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
   BUILDKITE_ARTIFACTORY_USER: 'athreya'
   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
