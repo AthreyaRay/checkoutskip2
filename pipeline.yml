@@ -1,14 +1,11 @@
 env:
-  BUILDKITE_ARTIFACT_DOWNLOAD_DESTINATION: 'rt://tf-trial/workspaces/jfrog-ws1/test.txt'
+  BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://tf-trial/workspaces/jfrog-ws1/test.txt'
   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
   BUILDKITE_ARTIFACTORY_USER: 'athreya'
   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
 
 steps:
-- command: cat test-download.txt
-  plugins:
-  - artifacts#v1.9.3:
-      download:
-      - from: "test.txt"
-        to: "test-download.txt"
+- command:|
+- cat test-download.txt
+- buildkite-agent artifact download "/test.txt" .
