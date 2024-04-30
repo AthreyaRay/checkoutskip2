@@ -6,6 +6,4 @@ env:
   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
 
 steps:
-- command:|
-- cat test-download.txt
-- buildkite-agent artifact download "/test.txt" .
+- command: buildkite-agent artifact download "/test.txt" .
