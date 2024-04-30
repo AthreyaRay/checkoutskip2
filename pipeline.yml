@@ -2,7 +2,7 @@ env:
   BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://https://personaluse4.jfrog.io/artifactory/test123-terraform'
   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
   BUILDKITE_ARTIFACTORY_USER: 'admin'
-  BUILDKITE_ARTIFACTORY_PASSWORD: 'password'
+  BUILDKITE_ARTIFACTORY_PASSWORD: 'cmVmdGtuOjAxOjE3NDYwMTMwMjQ6Zjd6d3RkSVlIbFdvanlDZDc3aWU5TnVwSEhD'
 
 steps:
 - command: echo "hello world" > test.txt
