@@ -1,5 +1,5 @@
 env:
-  BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://https://personaluse4.jfrog.io/artifactory/test123-terraform'
+  BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://https://personaluse4.jfrog.io/artifactory/test123-terraform/sample'
   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
   BUILDKITE_ARTIFACTORY_USER: 'athreya'
   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
