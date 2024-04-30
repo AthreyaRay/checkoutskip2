@@ -1,0 +1,23 @@
+# steps:
+# - command: echo "hi there! 1234567891133qwerertyutrertsssssssssy"
+# - commands:
+#   - |
+#     buildkite-agent annotate --context "append-test" --style 'info' "<img src=\"https://upload.wikimedia.org/wikipedia/commons/1/16/HDRI_Sample_Scene_Balls_%28JPEG-HDR%29.jpg\" style=\"width: 38px; height: 38px;\"> This is a test <br />"
+#   - |
+#     buildkite-agent annotate --context "append-test" --append "<br /> This is append test"
+#   - |
+#     buildkite-agent annotate --context "append-test" --append "<br /> This is append test completed"
+
+#   plugins:
+# steps:
+# - command: "yarn install; yarn run test"
+#   env:
+#     MY_SPECIAL_BUT_PUBLIC_VALUE: kittens
+#   plugins:
+#   - docker#v5.11.0:
+#       image: "node:7"
+#       always-pull: true
+#       propagate-environment: true
+
+steps:
+- command: buildkite-agent artifact download . "*.*"
