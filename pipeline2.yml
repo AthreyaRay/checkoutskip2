@@ -8,7 +8,7 @@
 #   - |
 #     buildkite-agent annotate --context "append-test" --append "<br /> This is append test completed"
 
-#   plugins:
+# plugins:
 # steps:
 # - command: "yarn install; yarn run test"
 #   env:
@@ -19,5 +19,5 @@
 #       always-pull: true
 #       propagate-environment: true
 
-steps:
-- command: buildkite-agent artifact download . "*.*"
+# steps:
+# - command: buildkite-agent artifact download . "*.*"
