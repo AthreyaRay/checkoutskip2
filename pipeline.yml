@@ -24,6 +24,7 @@ steps:
 - label: "send results to slack"
   timeout_in_minutes: 2
   allow_dependency_failure: true
+  depends_on: "this"
   notify:
   - slack: "#slack_notification_test"
 
