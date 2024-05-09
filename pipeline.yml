@@ -17,13 +17,14 @@ steps:
 - label: "job retry vs rebuild times test :rocket:"
   command: |
     echo "this is a test for rebuild and retry $BUILDKITE_BUILD_ID and Job ID $BUILDKITE_JOB_ID"
+    sleep 20
     exit 1
   key: "this" # The key should be a simple string, not "This"
 
 - label: "send results to slack"
   command: echo "test"
-  agents:
-    queue: "another_test"
+  # agents:
+  #   queue: "another_test"
   priority: 0
   notify:
   - slack: "#slack_notification_test"
