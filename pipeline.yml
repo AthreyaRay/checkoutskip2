@@ -23,6 +23,7 @@ steps:
 
 - label: "send results to slack"
   command: echo "test"
+  priority: 0
   notify:
   - slack: "#slack_notification_test"
   timeout_in_minutes: 2
