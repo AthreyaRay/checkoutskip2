@@ -26,7 +26,7 @@ steps:
   notify:
   - slack: "#slack_notification_test"
   timeout_in_minutes: 2
-  allow_dependency_failure: true
+
   depends_on: "this"
 
 
