@@ -23,6 +23,8 @@ steps:
 
 - label: "send results to slack"
   command: echo "test"
+  agents:
+    queue: "default-queue"
   priority: 0
   notify:
   - slack: "#slack_notification_test"
