@@ -22,11 +22,12 @@ steps:
   key: "this" # The key should be a simple string, not "This"
 
 - label: "send results to slack"
+  command: echo "test"
+  notify:
+  - slack: "#slack_notification_test"
   timeout_in_minutes: 2
   allow_dependency_failure: true
   depends_on: "this"
-  notify:
-  - slack: "#slack_notification_test"
 
 
 
