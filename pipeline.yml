@@ -117,14 +117,14 @@ steps:
     command: "echo \"This is a success.\""
   - key: "step2"
     label: ":pipeline:Group1-step2"
-    command: "echo \"hi\""
+    command: "exit 1"
     depends_on:
     - "step1"
   notify:
   - github_commit_status:
       context: "my-group-status"
-- if: "!build.pull_request.draft && build.pull_request.id != null"
-  group: "📦 Group2"
+
+- group: "📦 Group2"
   steps:
   - key: "group2-step1"
     label: ":pipeline:Group2-Step1"
