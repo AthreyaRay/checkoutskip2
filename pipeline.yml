@@ -69,8 +69,8 @@ steps:
     key: step2
 
 
-- if: "!build.pull_request.draft && build.pull_request.id != null"
-  group: "📦 Group2"
+
+- group: "📦 Group2"
   depends_on:
   - firstbuild
   notify:
@@ -81,9 +81,30 @@ steps:
     command: echo "This is a success."
     key: group2-step1
   - label: ":pipeline:Group2-step2"
-    command: exit 1
+    command: echo "works too"
     depends_on:
     - group2-step1
+    key: build2-step2
+
+
+
+
+
+- if: "build.branch == 'slave'"
+  group: "📦 Group3"
+  depends_on:
+  - firstbuild
+  notify:
+  - github_commit_status:
+      context: "my-group-status-2"
+  steps:
+  - label: ":pipeline:Group2-Step1"
+    command: echo "This is a success."
+    key: group3-step1
+  - label: ":pipeline:Group2-step2"
+    command: exit 1
+    depends_on:
+    - group3-step1
     key: build2-step2
 
 
