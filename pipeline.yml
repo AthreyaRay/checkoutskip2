@@ -81,7 +81,7 @@ steps:
     command: echo "This is a success."
     key: group2-step1
   - label: ":pipeline:Group2-step2"
-    command: echo "works too"
+    command: "./sleep.sh"
     depends_on:
     - group2-step1
     key: build2-step2
