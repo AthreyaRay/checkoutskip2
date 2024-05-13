@@ -118,6 +118,7 @@ steps:
   - key: "step2"
     label: ":pipeline:Group1-step2"
     command: exit 1
+    wait: ~
     continue_on_failure: true
     depends_on:
     - "step1"
