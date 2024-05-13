@@ -35,21 +35,53 @@
 
 
 
+# steps:
+# - group: ":lock_with_ink_pen: Security Audits"
+#   key: "audits"
+#   steps:
+#   - label: ":brakeman: Brakeman"
+#     command: "echo step 1 passed"
+#   - label: ":bundleaudit: Bundle Audit"
+#     command: "echo step 2 passed"
+#   - label: ":yarn: Yarn Audit"
+#     command: "echo step p3 assed"
+#   - label: ":yarn: Outdated Check"
+#     command: exit 1
+#   notify:
+#   - github_commit_status:
+#       context: "group status check at bottom"
+
+
 steps:
-- group: ":lock_with_ink_pen: Security Audits"
-  key: "audits"
+- group: "📦 Group1"
+  key: firstbuild
   notify:
   - github_commit_status:
-      context: "group status check"
-
+      context: "my-group-status"
   steps:
-  - label: ":brakeman: Brakeman"
-    command: "echo step 1 passed"
-  - label: ":bundleaudit: Bundle Audit"
-    command: "echo step 2 passed"
-  - label: ":yarn: Yarn Audit"
-    command: "echo step p3 assed"
-  - label: ":yarn: Outdated Check"
+  - label: ":pipeline:Group1-Step1"
+    command: echo "This is a success."
+    key: step1
+  - label: ":pipeline:Group1-step2"
     command: exit 1
+    depends_on:
+    - step1
+    key: step2
+
+- group: "📦 Group2"
+  depends_on:
+  - firstbuild
+  notify:
+  - github_commit_status:
+      context: "my-group-status-2"
+  steps:
+  - label: ":pipeline:Group2-Step1"
+    command: echo "This is a success."
+    key: group2-step1
+  - label: ":pipeline:Group2-step2"
+    command: exit 1
+    depends_on:
+    - group2-step1
+    key: build2-step2
 
 
