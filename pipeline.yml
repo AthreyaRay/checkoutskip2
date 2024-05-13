@@ -44,12 +44,12 @@ steps:
 
   steps:
   - label: ":brakeman: Brakeman"
-    command: "echo step passed"
+    command: "echo step 1 passed"
   - label: ":bundleaudit: Bundle Audit"
-    command: "echo step passed"
+    command: "echo step 2 passed"
   - label: ":yarn: Yarn Audit"
-    command: "echo step passed"
+    command: "echo step p3 assed"
   - label: ":yarn: Outdated Check"
-    command: "echo step passed"
+    command: "echo step 4 passed"
 
 
