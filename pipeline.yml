@@ -68,7 +68,9 @@ steps:
     - step1
     key: step2
 
-- group: "📦 Group2"
+
+- if: "!build.pull_request.draft && build.pull_request.id != null"
+  group: "📦 Group2"
   depends_on:
   - firstbuild
   notify:
