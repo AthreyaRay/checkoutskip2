@@ -117,7 +117,7 @@ steps:
     command: "echo \"This is a success.\""
   - key: "step2"
     label: ":pipeline:Group1-step2"
-    command: "sleep 10"
+    command: sleep 600
     depends_on:
     - "step1"
   notify:
