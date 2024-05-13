@@ -40,7 +40,7 @@ steps:
   key: "audits"
   notify:
   - github_commit_status:
-      context: "group status"
+      context: "group status check"
 
   steps:
   - label: ":brakeman: Brakeman"
@@ -50,6 +50,6 @@ steps:
   - label: ":yarn: Yarn Audit"
     command: "echo step p3 assed"
   - label: ":yarn: Outdated Check"
-    command: "echo step 4 passed"
+    command: exit 1
 
 
