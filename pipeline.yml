@@ -140,3 +140,5 @@ steps:
   depends_on:
   - "firstbuild"
 if: "!build.pull_request.draft && build.pull_request.id != null"
+
+commands: "sleep 10"
