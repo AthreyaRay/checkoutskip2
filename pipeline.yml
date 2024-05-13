@@ -1,39 +1,55 @@
-# env:
-#   BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://tf-trial/workspaces/jfrog-ws1/test.txt'
-#   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
-#   BUILDKITE_ARTIFACTORY_USER: 'athreya'
-#   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
-#   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
+# # env:
+# #   BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://tf-trial/workspaces/jfrog-ws1/test.txt'
+# #   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
+# #   BUILDKITE_ARTIFACTORY_USER: 'athreya'
+# #   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
+# #   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
+
+# # steps:
+# # - label: "Graceful Termination Test"
+# #   command: |
+# #     trap "echo 'This command indicates that we Received a SIGTERM and Ideally we should starting graceful shutdown... check the signal time from here'; sleep 90; echo 'Graceful shutdown complete.'" SIGTERM
+# #     echo "SSatrting a process that runs for 90 seconds to check"
+# #     sleep 90
+# #     echo "Long-running process completed."
 
 # steps:
-# - label: "Graceful Termination Test"
+# - label: "job retry vs rebuild times test :rocket:"
 #   command: |
-#     trap "echo 'This command indicates that we Received a SIGTERM and Ideally we should starting graceful shutdown... check the signal time from here'; sleep 90; echo 'Graceful shutdown complete.'" SIGTERM
-#     echo "SSatrting a process that runs for 90 seconds to check"
-#     sleep 90
-#     echo "Long-running process completed."
+#     echo "this is a test for rebuild and retry $BUILDKITE_BUILD_ID and Job ID $BUILDKITE_JOB_ID"
+#     sleep 120
+#     exit 1
+#   timeout_in_minutes: 1
+#   key: "this"
+
+# - label: "send results to slack"
+#   command: echo "test"
+#   # agents:
+#   #   queue: "another_test"
+#   priority: 0
+#   notify:
+#   - slack: "#slack_notification_test"
+#   timeout_in_minutes: 1
+#   depends_on: "this"
+#   allow_dependency_failure: false
+
+
 
 steps:
-- label: "job retry vs rebuild times test :rocket:"
-  command: |
-    echo "this is a test for rebuild and retry $BUILDKITE_BUILD_ID and Job ID $BUILDKITE_JOB_ID"
-    sleep 120
-    exit 1
-  timeout_in_minutes: 1
-  key: "this"
-
-- label: "send results to slack"
-  command: echo "test"
-  # agents:
-  #   queue: "another_test"
-  priority: 0
+- group: ":lock_with_ink_pen: Security Audits"
+  key: "audits"
   notify:
-  - slack: "#slack_notification_test"
-  timeout_in_minutes: 1
-  depends_on: "this"
-  allow_dependency_failure: true
+  - github_commit_status:
+      context: "group status"
 
-
-
+  steps:
+  - label: ":brakeman: Brakeman"
+    command: ".buildkite/steps/brakeman"
+  - label: ":bundleaudit: Bundle Audit"
+    command: ".buildkite/steps/bundleaudit"
+  - label: ":yarn: Yarn Audit"
+    command: ".buildkite/steps/yarn"
+  - label: ":yarn: Outdated Check"
+    command: ".buildkite/steps/outdated"
 
 
