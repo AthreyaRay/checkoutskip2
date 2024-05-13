@@ -1,110 +1,141 @@
-# # env:
-# #   BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://tf-trial/workspaces/jfrog-ws1/test.txt'
-# #   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
-# #   BUILDKITE_ARTIFACTORY_USER: 'athreya'
-# #   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
-# #   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
+# # # env:
+# # #   BUILDKITE_ARTIFACT_UPLOAD_DESTINATION: 'rt://tf-trial/workspaces/jfrog-ws1/test.txt'
+# # #   BUILDKITE_ARTIFACTORY_URL: 'https://personaluse4.jfrog.io/artifactory'
+# # #   BUILDKITE_ARTIFACTORY_USER: 'athreya'
+# # #   BUILDKITE_ARTIFACTORY_PASSWORD: 'Srinivas@24'
+# # #   $$BUILDKITE_ARTIFACT_PATHS: 'https://personaluse4.jfrog.io/artifactory/tf-trial/workspaces/jfrog-ws1/'
+
+# # # steps:
+# # # - label: "Graceful Termination Test"
+# # #   command: |
+# # #     trap "echo 'This command indicates that we Received a SIGTERM and Ideally we should starting graceful shutdown... check the signal time from here'; sleep 90; echo 'Graceful shutdown complete.'" SIGTERM
+# # #     echo "SSatrting a process that runs for 90 seconds to check"
+# # #     sleep 90
+# # #     echo "Long-running process completed."
 
 # # steps:
-# # - label: "Graceful Termination Test"
+# # - label: "job retry vs rebuild times test :rocket:"
 # #   command: |
-# #     trap "echo 'This command indicates that we Received a SIGTERM and Ideally we should starting graceful shutdown... check the signal time from here'; sleep 90; echo 'Graceful shutdown complete.'" SIGTERM
-# #     echo "SSatrting a process that runs for 90 seconds to check"
-# #     sleep 90
-# #     echo "Long-running process completed."
+# #     echo "this is a test for rebuild and retry $BUILDKITE_BUILD_ID and Job ID $BUILDKITE_JOB_ID"
+# #     sleep 120
+# #     exit 1
+# #   timeout_in_minutes: 1
+# #   key: "this"
+
+# # - label: "send results to slack"
+# #   command: echo "test"
+# #   # agents:
+# #   #   queue: "another_test"
+# #   priority: 0
+# #   notify:
+# #   - slack: "#slack_notification_test"
+# #   timeout_in_minutes: 1
+# #   depends_on: "this"
+# #   allow_dependency_failure: false
+
+
+
+# # steps:
+# # - group: ":lock_with_ink_pen: Security Audits"
+# #   key: "audits"
+# #   steps:
+# #   - label: ":brakeman: Brakeman"
+# #     command: "echo step 1 passed"
+# #   - label: ":bundleaudit: Bundle Audit"
+# #     command: "echo step 2 passed"
+# #   - label: ":yarn: Yarn Audit"
+# #     command: "echo step p3 assed"
+# #   - label: ":yarn: Outdated Check"
+# #     command: exit 1
+# #   notify:
+# #   - github_commit_status:
+# #       context: "group status check at bottom"
+
 
 # steps:
-# - label: "job retry vs rebuild times test :rocket:"
-#   command: |
-#     echo "this is a test for rebuild and retry $BUILDKITE_BUILD_ID and Job ID $BUILDKITE_JOB_ID"
-#     sleep 120
-#     exit 1
-#   timeout_in_minutes: 1
-#   key: "this"
-
-# - label: "send results to slack"
-#   command: echo "test"
-#   # agents:
-#   #   queue: "another_test"
-#   priority: 0
-#   notify:
-#   - slack: "#slack_notification_test"
-#   timeout_in_minutes: 1
-#   depends_on: "this"
-#   allow_dependency_failure: false
-
-
-
-# steps:
-# - group: ":lock_with_ink_pen: Security Audits"
-#   key: "audits"
-#   steps:
-#   - label: ":brakeman: Brakeman"
-#     command: "echo step 1 passed"
-#   - label: ":bundleaudit: Bundle Audit"
-#     command: "echo step 2 passed"
-#   - label: ":yarn: Yarn Audit"
-#     command: "echo step p3 assed"
-#   - label: ":yarn: Outdated Check"
-#     command: exit 1
+# - group: "📦 Group1"
+#   key: firstbuild
 #   notify:
 #   - github_commit_status:
-#       context: "group status check at bottom"
+#       context: "my-group-status"
+#   steps:
+#   - label: ":pipeline:Group1-Step1"
+#     command: echo "This is a success."
+#     key: step1
+#   - label: ":pipeline:Group1-step2"
+#     command: echo "hi"
+#     depends_on:
+#     - step1
+#     key: step2
+
+
+
+# - group: "📦 Group2"
+#   depends_on:
+#   - firstbuild
+#   notify:
+#   - github_commit_status:
+#       context: "my-group-status-2"
+#   steps:
+#   - label: ":pipeline:Group2-Step1"
+#     command: echo "This is a success."
+#     key: group2-step1
+#   - label: ":pipeline:Group2-step2"
+#     command: echo "works"
+#     depends_on:
+#     - group2-step1
+#     key: build2-step2
+
+
+
+
+
+# - if: "!build.pull_request.draft && build.pull_request.id != null"
+#   group: "📦 Group3"
+#   depends_on:
+#   - firstbuild
+#   notify:
+#   - github_commit_status:
+#       context: "my-group-status-2"
+#   steps:
+#   - label: ":pipeline:Group2-Step1"
+#     command: echo "This is a success."
+#     key: group3-step1
+#   - label: ":pipeline:Group2-step2"
+#     command: exit 1
+#     depends_on:
+#     - group3-step1
+#     key: build2-step2
 
 
 steps:
-- group: "📦 Group1"
-  key: firstbuild
+- key: "firstbuild"
+  group: "📦 Group1"
+  steps:
+  - key: "step1"
+    label: ":pipeline:Group1-Step1"
+    command: "echo \"This is a success.\""
+  - key: "step2"
+    label: ":pipeline:Group1-step2"
+    command: "echo \"hi\""
+    depends_on:
+    - "step1"
   notify:
   - github_commit_status:
       context: "my-group-status"
+- if: "!build.pull_request.draft && build.pull_request.id != null"
+  group: "📦 Group2"
   steps:
-  - label: ":pipeline:Group1-Step1"
-    command: echo "This is a success."
-    key: step1
-  - label: ":pipeline:Group1-step2"
-    command: echo "hi"
+  - key: "group2-step1"
+    label: ":pipeline:Group2-Step1"
+    command: "echo \"This is a success.\""
+  - key: "build2-step2"
+    label: ":pipeline:Group2-step2"
+    command: "exit 1"
     depends_on:
-    - step1
-    key: step2
-
-
-
-- group: "📦 Group2"
-  depends_on:
-  - firstbuild
+    - "group2-step1"
   notify:
   - github_commit_status:
       context: "my-group-status-2"
-  steps:
-  - label: ":pipeline:Group2-Step1"
-    command: echo "This is a success."
-    key: group2-step1
-  - label: ":pipeline:Group2-step2"
-    command: "./sleep.sh"
-    depends_on:
-    - group2-step1
-    key: build2-step2
-
-
-
-
-
-- if: "build.branch == 'slave'"
-  group: "📦 Group3"
   depends_on:
-  - firstbuild
-  notify:
-  - github_commit_status:
-      context: "my-group-status-2"
-  steps:
-  - label: ":pipeline:Group2-Step1"
-    command: echo "This is a success."
-    key: group3-step1
-  - label: ":pipeline:Group2-step2"
-    command: exit 1
-    depends_on:
-    - group3-step1
-    key: build3-step2
-
-
+  - "firstbuild"
