@@ -117,7 +117,7 @@ steps:
     command: "echo \"This is a success.\""
   - key: "step2"
     label: ":pipeline:Group1-step2"
-    command: "echo \"hi\""
+    command: "sleep 10"
     depends_on:
     - "step1"
   notify:
@@ -141,4 +141,3 @@ steps:
   - "firstbuild"
 if: "!build.pull_request.draft && build.pull_request.id != null"
 
-commands: "sleep 10"
