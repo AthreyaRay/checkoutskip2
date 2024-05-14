@@ -147,7 +147,7 @@ steps:
     notify:
     - github_commit_status:
         context: "Frontend E2E/format-prettier"
-    command: echo "hi"
+    command: exit 1
 
   - label: "Lint :lint-roller:"
     notify:
@@ -155,8 +155,7 @@ steps:
         context: "Frontend E2E/lint"
     command: echo "hi"
 
-notify:
-- email: "athreya@buildkite.com"
+
 
 # - group: "Mabl PR Tests"
 #   key: "mabl"
