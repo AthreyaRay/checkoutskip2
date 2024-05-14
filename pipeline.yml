@@ -155,9 +155,8 @@ steps:
         context: "Frontend E2E/lint"
     command: echo "hi"
 
-- if: "!build.pull_request.draft && build.pull_request.id != null"
+- group: "Mabl PR Tests"
   key: "mabl"
-  group: "Mabl PR Tests"
   steps:
   - label: "Wait for Render environment to be ready"
     command: echo "hi"
@@ -169,3 +168,4 @@ steps:
       context: "Frontend E2E/mabl-tests"
   depends_on:
   - "ci"
+- if: "!build.pull_request.draft && build.pull_request.id != null"
