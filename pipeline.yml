@@ -155,17 +155,20 @@ steps:
         context: "Frontend E2E/lint"
     command: echo "hi"
 
-- group: "Mabl PR Tests"
-  key: "mabl"
-  steps:
-  - label: "Wait for Render environment to be ready"
-    command: echo "hi"
-  - wait
-  - label: "Run mabl tests against Render preview"
-    command: echo "hi"
   notify:
-  - github_commit_status:
-      context: "Frontend E2E/mabl-tests"
-  depends_on:
-  - "ci"
-- if: "!build.pull_request.draft && build.pull_request.id != null"
+  - email: "athreya@buildkite.com"
+
+# - group: "Mabl PR Tests"
+#   key: "mabl"
+#   steps:
+#   - label: "Wait for Render environment to be ready"
+#     command: echo "hi"
+#   - wait
+#   - label: "Run mabl tests against Render preview"
+#     command: echo "hi"
+#   notify:
+#   - github_commit_status:
+#       context: "Frontend E2E/mabl-tests"
+#   depends_on:
+#   - "ci"
+# - if: "!build.pull_request.draft && build.pull_request.id != null"
