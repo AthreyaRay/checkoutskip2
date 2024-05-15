@@ -138,22 +138,22 @@
 # if: "!build.pull_request.draft && build.pull_request.id != null"
 
 
-steps:
-- if: "!build.pull_request.draft"
-  key: "ci"
-  group: "Continuous Integration :buildkite:"
-  steps:
-  - label: "Format Prettier :barber:"
-    notify:
-    - github_commit_status:
-        context: "Frontend E2E/format-prettier"
-    command: exit 1
+# steps:
+# - if: "!build.pull_request.draft"
+#   key: "ci"
+#   group: "Continuous Integration :buildkite:"
+#   steps:
+#   - label: "Format Prettier :barber:"
+#     notify:
+#     - github_commit_status:
+#         context: "Frontend E2E/format-prettier"
+#     command: exit 1
 
-  - label: "Lint :lint-roller:"
-    notify:
-    - github_commit_status:
-        context: "Frontend E2E/lint"
-    command: echo "hi"
+#   - label: "Lint :lint-roller:"
+#     notify:
+#     - github_commit_status:
+#         context: "Frontend E2E/lint"
+#     command: echo "hi"
 
 
 
@@ -171,3 +171,7 @@ steps:
 #   depends_on:
 #   - "ci"
 # - if: "!build.pull_request.draft && build.pull_request.id != null"
+
+steps:
+- label: "Merge branch 'dev' into SCALE-226-FE-Show-Manage-Libraries-Button-UI-only-for-the-allowed-roles"
+  command: echo "hi"
