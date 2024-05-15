@@ -175,3 +175,9 @@
 steps:
 - label: "Merge branch 'dev' into SCALE-226-FE-Show-Manage-Libraries-Button-UI-only-for-the-allowed-roles"
   command: echo "hi"
+
+- label: "This is the step from the master branch and the order of this step is - one"
+  command: echo "hi"
+
+- label: "This is the step from the master branch and the order of this step is - two"
+  command: echo "hi"
