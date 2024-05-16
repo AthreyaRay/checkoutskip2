@@ -190,7 +190,7 @@
 steps:
 - label: "Set and check env var"
   commands:
-  - echo $(cat README.md |grep checkoutskip2) >> sample.txt
+  - cat README.md |grep checkoutskip2 >> sample.txt
   - "echo $$MY_VAR" # This command uses the variable within the same step
   env:
     # This block defines other environment variables needed at the step level
