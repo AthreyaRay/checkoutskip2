@@ -190,9 +190,9 @@
 steps:
 - label: "Set and check env var"
   commands:
-  - cat README.md
+  - $$testvar = echo $(cat README.md)
   - "echo $$MY_VAR" # This command uses the variable within the same step
   env:
     # This block defines other environment variables needed at the step level
-    MY_VAR: cat sample.txt
+    MY_VAR: testvar
 
