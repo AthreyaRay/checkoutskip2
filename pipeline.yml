@@ -189,9 +189,7 @@
 
 steps:
 - label: "Set and check env var"
-  command:
-  - "export MY_VAR='Hello World'"
-  - "echo $MY_VAR" # This command uses the variable within the same step
+  command: "echo $$MY_VAR" # This command uses the variable within the same step
   env:
     # This block defines other environment variables needed at the step level
-    OTHER_VAR: "Another value"
+    $MY_VAR: "Hello World"
