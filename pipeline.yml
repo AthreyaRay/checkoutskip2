@@ -190,9 +190,9 @@
 steps:
 - label: "Set and check env var"
   commands:
-  - "export MY_VAR=\"$(cat README.md)\"" # Directly read contents into MY_VAR
-  - "echo $$MY_VAR" # Echo the variable
-env:
-  # This block defines other environment variables needed at the step level
-  MY_VAR: echo "$$MY_VAR"
+  - "MY_VAR=$(cat README.md | grep checkoutskip2); echo $MY_VAR > /tmp/my_var.txt"
+  - "echo $$MY_VAR"
+# env:
+#   # This block defines other environment variables needed at the step level
+#   MY_VAR: echo "$$MY_VAR"
 
