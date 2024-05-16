@@ -190,7 +190,7 @@
 steps:
 - label: "Set and check env var"
   commands:
-  - "MY_VAR=$(cat README.md | grep checkoutskip2); echo $MY_VAR > /tmp/my_var.txt"
+  - "MY_VAR=$(cat README.md | grep checkoutskip2); echo $MY_VAR > /opt/homebrew/etc/buildkite-agent/hooks/my_var.txt"
   - "echo $$MY_VAR"
 # env:
 #   # This block defines other environment variables needed at the step level
