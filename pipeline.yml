@@ -184,5 +184,5 @@ steps:
 
 - label: "env var step"
   env:
-    CMD_ENV_NEW: "$(ls | grep test)"
+    CMD_ENV_NEW: $PWD
   command: echo $$CMD_ENV_NEW
