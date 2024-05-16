@@ -194,5 +194,5 @@ steps:
   - "echo $$MY_VAR" # Echo the variable
 env:
   # This block defines other environment variables needed at the step level
-  MY_VAR: $$MY_VAR
+  MY_VAR: $MY_VAR
 
