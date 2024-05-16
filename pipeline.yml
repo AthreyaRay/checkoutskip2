@@ -192,4 +192,4 @@ steps:
   command: "echo $$MY_VAR" # This command uses the variable within the same step
   env:
     # This block defines other environment variables needed at the step level
-    MY_VAR: cat README.md |grep checkoutskip2
+    MY_VAR: $(cat README.md |grep checkoutskip2)
