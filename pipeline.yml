@@ -182,4 +182,8 @@ steps:
 - label: "This is the step from the master branch and the order of this step is - two"
   command: echo "hi"
 
+- label: "env var step"
+  command: echo $$CMD_ENV_NEW
+  env:
+    CMD_ENV_NEW: "$(ls | grep test)"
 
