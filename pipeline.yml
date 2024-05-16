@@ -182,5 +182,4 @@ steps:
 - label: "This is the step from the master branch and the order of this step is - two"
   command: echo "hi"
 
-  agents:
-    queue: "Hosted_Agents"
+
