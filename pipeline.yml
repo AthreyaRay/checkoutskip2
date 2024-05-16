@@ -172,17 +172,26 @@
 #   - "ci"
 # - if: "!build.pull_request.draft && build.pull_request.id != null"
 
+# steps:
+# - label: "Merge branch 'dev' into SCALE-226-FE-Show-Manage-Libraries-Button-UI-only-for-the-allowed-roles"
+#   command: echo "hi"
+
+# - label: "This is the step from the master branch and the order of this step is - one"
+#   command: echo "hi"
+
+# - label: "This is the step from the master branch and the order of this step is - two"
+#   command: echo "hi"
+
+# - label: "env var step"
+#   env:
+#     CMD_ENV_NEW: ls
+#   command: echo $$CMD_ENV_NEW
+
 steps:
-- label: "Merge branch 'dev' into SCALE-226-FE-Show-Manage-Libraries-Button-UI-only-for-the-allowed-roles"
-  command: echo "hi"
-
-- label: "This is the step from the master branch and the order of this step is - one"
-  command: echo "hi"
-
-- label: "This is the step from the master branch and the order of this step is - two"
-  command: echo "hi"
-
-- label: "env var step"
+- label: "Set and check env var"
+  command:
+  - "export MY_VAR='Hello World'"
+  - "echo $MY_VAR" # This command uses the variable within the same step
   env:
-    CMD_ENV_NEW: ls
-  command: echo $$CMD_ENV_NEW
+    # This block defines other environment variables needed at the step level
+    OTHER_VAR: "Another value"
