@@ -184,5 +184,5 @@ steps:
 
 - label: "env var step"
   env:
-    CMD_ENV_NEW: "$($PWD|ls)"
+    CMD_ENV_NEW: "$($PWD |ls)"
   command: echo $$CMD_ENV_NEW
