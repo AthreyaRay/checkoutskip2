@@ -188,15 +188,21 @@
 #   command: echo $$CMD_ENV_NEW
 
 steps:
-- label: "signed pipleline check"
+- label: "signed pipeline check"
   commands:
-  - "grep 'checkoutskip2' README.md  > /opt/homebrew/etc/buildkite-agent/hooks/my_var.txt"
+  - "grep 'checkoutskip2' README.md > /opt/homebrew/etc/buildkite-agent/hooks/my_var.txt"
 
 - block: ":rocket: Are we ready???"
 
-- wait
+- wait # This will wait for the block step to be manually unblocked
 
-command: echo "finished"
+- label: "dependency step"
+  command: "echo 'This step runs after the block step is unblocked'"
+
+- wait # Ensures the previous command completes before moving to the final step
+
+- label: "final step"
+  command: "echo 'finished'"
 # env:
 #   # This block defines other environment variables needed at the step level
 #   MY_VAR: echo "$$MY_VAR"
