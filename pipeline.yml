@@ -192,7 +192,7 @@ steps:
   commands:
   - "grep 'checkoutskip2' README.md  > /opt/homebrew/etc/buildkite-agent/hooks/my_var.txt"
 
-- block: ":rocket: Are we ready?"
+- block: ":rocket: Are we ready???"
 
 # env:
 #   # This block defines other environment variables needed at the step level
