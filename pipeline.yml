@@ -194,4 +194,9 @@ steps:
 # env:
 #   # This block defines other environment variables needed at the step level
 #   MY_VAR: echo "$$MY_VAR"
+signature:
+  algorithm: EdDSA
+  signed_fields:
+  - command
+
 
