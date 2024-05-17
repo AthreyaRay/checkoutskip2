@@ -188,7 +188,7 @@
 #   command: echo $$CMD_ENV_NEW
 
 steps:
-- label: "Set and check env var"
+- label: "signed pipleline check"
   commands:
   - "grep 'checkoutskip2' README.md  > /opt/homebrew/etc/buildkite-agent/hooks/my_var.txt"
 # env:
