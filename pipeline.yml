@@ -198,5 +198,5 @@ signature:
   algorithm: EdDSA
   signed_fields:
   - command
-
+  value: Ax-8fPRDBJjnVYePpSnr-Saa63FXGdc0REbcSEpqDao
 
