@@ -216,6 +216,6 @@
 steps:
 - label: Hello World!
   command: echo Hello World, Lets start!
-  parallalism: 26
+  parallelism: 26
   agents:
     queue: kubernetes
