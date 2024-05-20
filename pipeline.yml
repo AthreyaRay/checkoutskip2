@@ -224,6 +224,7 @@
 steps:
 - label: "Only run on PR merge"
   command: echo "Only step 1 is running"
+  if: build.message =~ /Triggered /
 
 
 - label: "Regular Step"
