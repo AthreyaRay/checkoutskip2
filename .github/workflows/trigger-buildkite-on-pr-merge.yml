@@ -1,0 +1,22 @@
+name: Trigger Buildkite on PR Merge
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  triggerBuildkite:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set Up Job
+      if: github.event.pull_request.merged == true
+      run: echo "RUN_SPECIFIC_STEP=true" >> $GITHUB_ENV
+
+    - name: Trigger Buildkite Pipeline
+      uses: buildkite/trigger-pipeline-action@v1
+      with:
+        buildkite_api_token: ${{ secrets.BUILDKITE_API_TOKEN }}
+        pipeline: "skiptest123"
+        commit: "HEAD"
+        branch: ${{ github.head_ref }}
+        message: "Triggered by PR merge"
+        env: "RUN_SPECIFIC_STEP=true"
