@@ -221,14 +221,27 @@
 #     queue: kubernetes
 
 
+# steps:
+# - label: "Only run on PR merge"
+#   command: echo "Only step 1 is running"
+#   if: build.message =~ /Triggered / || build.message =~ /Merge /
+
+
+# - label: "Regular Step"
+#   command: echo "regular step is running"
+#   if: build.message =~ /Merge /
+
+# ######
+
 steps:
-- label: "Only run on PR merge"
-  command: echo "Only step 1 is running"
-  if: build.message =~ /Triggered / || build.message =~ /Merge /
-
-
-- label: "Regular Step"
-  command: echo "regular step is running"
-  if: build.message =~ /Merge /
-
-######
+- label: "Run tests and collect analytics"
+  commands:
+  - "pip install -r requirements.txt"
+  - "pytest"
+  plugins:
+  - docker#v3.8.0:
+      image: "python:3.9"
+      environment:
+      - BUILDKITE_ANALYTICS_TOKEN
+  env:
+    BUILDKITE_ANALYTICS_TOKEN: "AvjDAf5Egs317ia4bZiuDUKq"
