@@ -229,6 +229,6 @@ steps:
 
 - label: "Regular Step"
   command: echo "regular step is running"
-  if: build.message !~ /Triggered /
+  if: build.message =~ /Some Vaulue that can never evaluate to true /
 
 ######
