@@ -224,9 +224,11 @@
 steps:
 - label: "Only run on PR merge"
   command: echo "Only step 1 is running"
+  if: build.message =~ /Triggered / || build.message =~ /Merge /
 
 
 - label: "Regular Step"
   command: echo "regular step is running"
-  if: build.message !~ /Triggered /
+  if: build.message =~ /Merge /
 
+######
