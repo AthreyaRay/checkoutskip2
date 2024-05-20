@@ -213,9 +213,19 @@
 #   value: Ax-8fPRDBJjnVYePpSnr-Saa63FXGdc0REbcSEpqDao
 
 
+# steps:
+# - label: Hello World!
+#   command: echo Hello World, Lets start!
+#   parallelism: 3
+#   agents:
+#     queue: kubernetes
+
+
 steps:
-- label: Hello World!
-  command: echo Hello World, Lets start!
-  parallelism: 3
-  agents:
-    queue: kubernetes
+- label: "Only run on PR merge"
+  command: echo "Only step 1 is running"
+  env: RUN_SPECIFIC_STEP = 'true'
+
+- label: "Regular Step"
+  command: echo "regular step is running"
+

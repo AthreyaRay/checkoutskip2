@@ -1,0 +1,26 @@
+name: Trigger Buildkite on PR Merge
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  triggerBuildkite:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Trigger Buildkite Pipeline
+      run: |
+        curl -X POST "https://api.buildkite.com/v2/organizations/personal-use-4/pipelines/skiptest123/builds" \
+        -H "Authorization: Bearer ${{ secrets.BUILDKITE_API_TOKEN }}" \
+        -d '{
+          "commit": "HEAD",
+          "branch": "${{ github.head_ref }}",
+          "message": "Triggered by PR merge",
+          "env": {
+            "RUN_SPECIFIC_STEP": "true"
+          }
+        }'
+#######
