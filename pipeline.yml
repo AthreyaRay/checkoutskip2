@@ -236,7 +236,7 @@
 steps:
 - label: "Run tests and collect analytics"
   commands:
-  - "pip install -r requirements.txt"
+  - "pip3 install -r requirements.txt"
   - "pytest"
   plugins:
   - docker#v3.8.0:
