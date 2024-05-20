@@ -6,17 +6,20 @@ on:
 jobs:
   triggerBuildkite:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
-    - name: Set Up Job
-      if: github.event.pull_request.merged == true
-      run: echo "RUN_SPECIFIC_STEP=true" >> $GITHUB_ENV
+    - name: Checkout
+      uses: actions/checkout@v2
 
     - name: Trigger Buildkite Pipeline
-      uses: "buildkite/trigger-pipeline-action@v2.1.0"
-      with:
-        buildkite_api_token: ${{ secrets.BUILDKITE_API_TOKEN }}
-        pipeline: "skiptest123"
-        commit: "HEAD"
-        branch: ${{ github.head_ref }}
-        message: "Triggered by PR merge"
-        env: "RUN_SPECIFIC_STEP=true"
+      run: |
+        curl -X POST "https://api.buildkite.com/v2/organizations/personal-use-4/pipelines/skiptest123/builds" \
+        -H "Authorization: Bearer ${{ secrets.BUILDKITE_API_TOKEN }}" \
+        -d '{
+          "commit": "HEAD",
+          "branch": "${{ github.head_ref }}",
+          "message": "Triggered by PR merge",
+          "env": {
+            "RUN_SPECIFIC_STEP": "true"
+          }
+        }'
