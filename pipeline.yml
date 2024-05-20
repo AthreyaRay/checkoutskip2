@@ -223,9 +223,9 @@
 
 steps:
 - label: "Only run on PR merge"
-  command: "Only step 1 is running"
+  command: echo "Only step 1 is running"
   env: RUN_SPECIFIC_STEP = 'true'
 
 - label: "Regular Step"
-  command: "regular step is running"
+  command: echo "regular step is running"
 
