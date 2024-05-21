@@ -251,6 +251,4 @@
 
 
 steps:
-- command: ""
-- echo "hi there, sigterm test"
-- sleep 30
+- command: echo "hi there, sigterm test" && sleep 30
