@@ -236,8 +236,9 @@
 steps:
 - label: "Run tests and collect analytics"
   commands:
-  - "pip3 install -r requirements.txt"
-  - "pytest"
+  - "pip install --upgrade pip" # Ensure pip is up-to-date
+  - "pip install -r requirements.txt"
+  - "python -m pytest" # Use python -m to ensure pytest runs correctly
   plugins:
   - docker#v3.8.0:
       image: "python:3.9"
