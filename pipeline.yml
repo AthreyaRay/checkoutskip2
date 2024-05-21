@@ -236,9 +236,25 @@
 steps:
 - label: "Run tests and collect analytics"
   commands:
-  - "pip install --upgrade pip" # Ensure pip is up-to-date
-  - "pip install -r requirements.txt"
-  - "python -m pytest" # Use python -m to ensure pytest runs correctly
+  steps:
+  - label: "Run tests and collect analytics"
+    commands:
+    - "pip install --upgrade pip"
+    - "pip install -r requirements.txt"
+    - "pip list" # Lists installed packages
+    - "which pytest" # Finds where pytest is installed
+    - "python -m pytest" # Use python -m to ensure pytest runs correctly
+    plugins:
+    - docker#v3.8.0:
+        image: "python:3.9"
+        volumes:
+        - "/opt/homebrew/var/buildkite-agent/builds/Athreyas-MacBook-Pro-local-1/personal-use-4/skiptest123:/workdir"
+        workdir: "/workdir"
+        environment:
+        - "BUILDKITE_ANALYTICS_TOKEN"
+    env:
+      BUILDKITE_ANALYTICS_TOKEN: "your-buildkite-api-key"
+
   plugins:
   - docker#v3.8.0:
       image: "python:3.9"
