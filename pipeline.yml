@@ -249,6 +249,8 @@
 #   env:
 #     BUILDKITE_ANALYTICS_TOKEN: "AvjDAf5Egs317ia4bZiuDUKq"
 
+env:
+  MY_SECRET: $MY_SECRET
 
 steps:
 - label: "My build step"
