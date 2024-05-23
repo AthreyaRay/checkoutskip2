@@ -251,8 +251,8 @@
 
 
 steps:
-- label: "Use MY_SECRET"
+- label: "Use Test Var"
   command:
   - "echo 'Using MY_SECRET:'"
-  - "echo $$MY_SECRET"
+  - "echo $$TEST_VAR"
 
