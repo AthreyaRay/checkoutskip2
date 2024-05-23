@@ -254,7 +254,7 @@ steps:
 - label: "My build step"
   commands:
   - echo "Accessing my secret"
-  - echo $MY_SECRET
+  - echo $$MY_SECRET
 
 
 
