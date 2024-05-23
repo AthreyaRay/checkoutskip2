@@ -259,7 +259,7 @@ steps:
 
 - label: "Example step using AWS Secrets Manager"
   plugins:
-  - seek-oss/aws-sm-buildkite-plugin#v1.1.0:
+  - seek-oss/aws-sm#v1.1.0:
       env:
         API_VALUE: "test_api_key"
   command:
