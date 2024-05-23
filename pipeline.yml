@@ -255,6 +255,8 @@ steps:
   commands:
   - echo "Accessing my secret"
   - echo $$MY_SECRET
+  agents:
+    queue: "default-queue"
 
 
 
