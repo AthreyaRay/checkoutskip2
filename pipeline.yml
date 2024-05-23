@@ -256,3 +256,14 @@ steps:
   - "echo 'Using MY_SECRET:'"
   - "echo $$TEST_VAR"
 
+
+- label: "Example step using AWS Secrets Manager"
+  plugins:
+  - seek-oss/aws-sm-buildkite-plugin#v1.1.0:
+      env:
+        API_VALUE: "test_api_key"
+  command:
+  - "echo 'Using secret fetched from AWS Secrets Manager'"
+  - "echo 'Fetched secret value: $API_VALUE'" # Avoid echoing secrets in production
+
+
