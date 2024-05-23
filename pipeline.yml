@@ -254,5 +254,5 @@ steps:
 - label: "Use MY_SECRET"
   command:
   - "echo 'Using MY_SECRET:'"
-  - "echo $MY_SECRET"
+  - "echo $$MY_SECRET"
 
