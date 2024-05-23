@@ -253,7 +253,7 @@
 steps:
 - label: "My build step"
   plugins:
-  - buildkite/elastic-ci-stack-s3-secrets-hooks#v0.5.0: ~
+  - elastic-ci-stack-s3-secrets-hooks
   commands:
   - echo "Accessing my secret"
   - echo $MY_SECRET
