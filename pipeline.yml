@@ -251,7 +251,8 @@
 
 
 steps:
-- label: "Display MY_SECRET"
+- label: "Use MY_SECRET"
   command:
-  - "echo 'Fetching MY_SECRET...'"
-  - "echo 'MY_SECRET is: $MY_SECRET'"
+  - "echo 'Using MY_SECRET:'"
+  - "echo $MY_SECRET"
+
