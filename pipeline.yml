@@ -251,11 +251,5 @@
 
 
 steps:
-- label: "My build step"
-  plugins:
-  - elastic-ci-stack-s3-secrets-hooks
-  commands:
-  - echo "Accessing my secret"
-  - echo $$MY_SECRET
-
+- command: echo "$$MY_SECRET"
 
