@@ -260,10 +260,9 @@ steps:
 - label: "Example step using AWS Secrets Manager"
   plugins:
   - seek-oss/aws-sm:
-      env:
-        API_VALUE: "test_api_key"
-  command:
-  - "echo 'Using secret fetched from AWS Secrets Manager'"
-  - "echo 'Fetched secret value: $API_VALUE'" # Avoid echoing secrets in production
+      secrets:
+        MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:253213882263:secret:lzrtest/api/secret-OSdHFr"
+    command: "echo 'Hello, world! My secret is $$MY_SECRET_ENV_VAR'"
+
 
 
