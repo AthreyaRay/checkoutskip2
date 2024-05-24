@@ -266,11 +266,11 @@
 
 steps:
 - label: "Example step using AWS Secrets Manager"
-  commands: 'echo \$MY_SECRET'
+  commands: 'echo \$MY_TEST'
   plugins:
   - seek-oss/aws-sm#v1.0.0:
       env:
-        MY_SECRET: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
+        MY_TEST: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
 
 
 
