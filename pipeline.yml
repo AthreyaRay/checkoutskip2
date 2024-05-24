@@ -266,7 +266,7 @@
 
 steps:
 - label: "Example step using AWS Secrets Manager"
-- commands: 'echo \$MY_SECRET'
+  commands: 'echo \$MY_SECRET'
   plugins:
   - seek-oss/aws-sm#v1.0.0:
       env:
