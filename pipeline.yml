@@ -257,20 +257,12 @@ steps:
   - "echo $$TEST_VAR"
 
 
-# - label: "Example step using AWS Secrets Manager"
-#   plugins:
-#   - seek-oss/aws-sm:
-#       env:
-#         MY_SECRET_ENV_VAR: 
-#   command: "echo 'Hello, world! My secret is $$MY_SECRET_ENV_VAR'"
-
-
-- label: "Example step using AWS Secrets Manager with aws-vault"
-  commands:
-  - "aws-vault exec buildkite-sandbox-admin -- aws secretsmanager get-secret-value --secret-id 'arn:aws:secretsmanager:us-east-1:253213882263:secret:lzrtest/api/secret-OSdHFr'"
-  - "export MY_SECRET_ENV_VAR=$(aws-vault exec buildkite-sandbox-admin -- aws secretsmanager get-secret-value --secret-id 'arn:aws:secretsmanager:us-east-1:253213882263:secret:lzrtest/api/secret-OSdHFr' --query 'SecretString' --output text)"
-  - "echo 'Hello, world! My secret is $$MY_SECRET_ENV_VAR'"
-
+- label: "Example step using AWS Secrets Manager"
+  plugins:
+  - seek-oss/aws-sm:
+      env:
+        MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
+  command: "echo 'Hello, world! My secret is $$MY_SECRET_ENV_VAR'"
 
 
 
