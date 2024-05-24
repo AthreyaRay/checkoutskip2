@@ -262,7 +262,7 @@ steps:
   - seek-oss/aws-sm:
       secrets:
         MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:253213882263:secret:lzrtest/api/secret-OSdHFr"
-    command: "echo 'Hello, world! My secret is $$MY_SECRET_ENV_VAR'"
+  command: "echo 'Hello, world! My secret is $$MY_SECRET_ENV_VAR'"
 
 
 
