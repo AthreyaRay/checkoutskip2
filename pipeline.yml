@@ -274,6 +274,10 @@
 
 
 steps:
+
+- label: "Print Environment Variables"
+  command: "echo $BUILDKITE_S3_ENDPOINT && echo $BUILDKITE_S3_DEFAULT_REGION"
+
 - label: "Generate and upload an artifact"
   commands:
   - echo "Hello, Buildkite using MinIO!" > artifact.txt
