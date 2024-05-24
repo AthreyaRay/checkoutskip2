@@ -264,14 +264,19 @@
 #         MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
 #   command: "echo 'Hello, world! My secret is $MY_SECRET_ENV_VAR'"
 
+# steps:
+# - label: "Example step using AWS Secrets Manager"
+#   commands: 'echo \$MY_TEST'
+#   plugins:
+#   - seek-oss/aws-sm#v1.0.0:
+#       env:
+#         MY_TEST: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
+
+
 steps:
-- label: "Example step using AWS Secrets Manager"
-  commands: 'echo \$MY_TEST'
-  plugins:
-  - seek-oss/aws-sm#v1.0.0:
-      env:
-        MY_TEST: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
-
-
+- label: "Generate and upload an artifact"
+  commands:
+  - echo "Hello, Buildkite using MinIO!" > artifact.txt
+  artifact_paths: "artifact.txt"
 
 
