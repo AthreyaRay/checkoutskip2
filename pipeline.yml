@@ -262,7 +262,7 @@ steps:
   - seek-oss/aws-sm:
       env:
         MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
-  command: "echo 'Hello, world! My secret is $$MY_SECRET_ENV_VAR'"
+  command: "echo 'Hello, world! My secret is $MY_SECRET_ENV_VAR'"
 
 
 
