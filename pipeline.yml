@@ -256,12 +256,12 @@
 #   - "echo 'Using MY_SECRET:'"
 #   - "echo $$TEST_VAR"
 
-
+## assigning an IAM role to your ec2 instance. Make sure that role has the permission to read and write secrets
 # - label: "Example step using AWS Secrets Manager"
 #   plugins:
 #   - seek-oss/aws-sm:
 #       env:
-#         MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
+#         MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"  ### This one is the arn of your secret in secrets manager
 #   command: "echo 'Hello, world! My secret is $MY_SECRET_ENV_VAR'"
 
 # steps:
@@ -273,14 +273,20 @@
 #         MY_TEST: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
 
 
+# steps:
+
+# - label: "Print Environment Variables"
+#   command: "echo $BUILDKITE_S3_ENDPOINT && echo $BUILDKITE_S3_DEFAULT_REGION"
+
+# - label: "Generate and upload an artifact"
+#   commands:
+#   - echo "Hello, Buildkite using MinIO!" > artifact.txt
+#   artifact_paths: "artifact.txt"
+
+
 steps:
-
-- label: "Print Environment Variables"
-  command: "echo $BUILDKITE_S3_ENDPOINT && echo $BUILDKITE_S3_DEFAULT_REGION"
-
-- label: "Generate and upload an artifact"
-  commands:
-  - echo "Hello, Buildkite using MinIO!" > artifact.txt
-  artifact_paths: "artifact.txt"
-
-
+- label: Hello World!
+  command: echo Hello World, Lets start!
+  parallelism: 3
+  agents:
+    queue: kubernetes
