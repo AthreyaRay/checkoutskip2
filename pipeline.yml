@@ -283,13 +283,6 @@
 #   - echo "Hello, Buildkite using MinIO!" > artifact.txt
 #   artifact_paths: "artifact.txt"
 
+{"steps": {"command": "echo 'Hello, world!'", "label": ":echo: Hello"},}
 
-steps:
-- label: Hello World!
-  command: echo Hello World, Lets start!
-  parallelism: 3
-  agents:
-    queue: kubernetes
-- label: Hello World!
-  command: echo Hello World, Lets start without kubernetes!
 
