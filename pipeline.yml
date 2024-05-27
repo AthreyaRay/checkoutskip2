@@ -290,3 +290,6 @@ steps:
   parallelism: 3
   agents:
     queue: kubernetes
+- label: Hello World!
+  command: echo Hello World, Lets start without kubernetes!
+
