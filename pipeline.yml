@@ -273,16 +273,21 @@
 #         MY_TEST: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
 
 
-# steps:
+steps:
 
-# - label: "Print Environment Variables"
-#   command: "echo $BUILDKITE_S3_ENDPOINT && echo $BUILDKITE_S3_DEFAULT_REGION"
+- label: "Print Environment Variables"
+  command: "echo $BUILDKITE_S3_ENDPOINT && sleep 400 "
+  key: "this"
+
+- label: "Print Environment Variables"
+  command: "echo $BUILDKITE_S3_ENDPOINT && sleep 400 "
+  depends_on: "this"
 
 # - label: "Generate and upload an artifact"
 #   commands:
 #   - echo "Hello, Buildkite using MinIO!" > artifact.txt
 #   artifact_paths: "artifact.txt"
 
-{"steps": {"command": "echo 'Hello, world!'", "label": ":echo: Hello"},}
+# {"steps": {"command": "echo 'Hello, world!'", "label": ":echo: Hello"},}
 
 
