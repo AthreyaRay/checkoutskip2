@@ -273,15 +273,15 @@
 #         MY_TEST: "arn:aws:secretsmanager:us-east-1:222754863288:secret:bktoken-HNMm9x"
 
 
-steps:
+# steps:
 
-- label: "Print Environment Variables"
-  command: "echo $BUILDKITE_S3_ENDPOINT && sleep 400 "
-  key: "this"
+# - label: "Print Environment Variables"
+#   command: "echo $BUILDKITE_S3_ENDPOINT && sleep 400 "
+#   key: "this"
 
-- label: "Print Environment Variables"
-  command: "echo $BUILDKITE_S3_ENDPOINT && sleep 400 "
-  depends_on: "this"
+# - label: "Print Environment Variables"
+#   command: "echo $BUILDKITE_S3_ENDPOINT && sleep 400 "
+#   depends_on: "this"
 
 # - label: "Generate and upload an artifact"
 #   commands:
@@ -291,3 +291,18 @@ steps:
 # {"steps": {"command": "echo 'Hello, world!'", "label": ":echo: Hello"},}
 
 
+steps:
+
+- label: "trigger staging smoke test"
+
+  key: "trigger-staging-smoke-test"
+
+  command: echo "test"
+
+  env:
+
+    AURORA_BAZEL_CONFIG_CI: "true"
+
+    AGENT_QUEUE_SUFFIX: "staging"
+
+    QUEUE_CAPABILITIES: {"custom": "true", "ami_id": "$AMI_ID"}
