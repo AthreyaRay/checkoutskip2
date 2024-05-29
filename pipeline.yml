@@ -301,8 +301,8 @@ steps:
 
   env:
 
-    AURORA_BAZEL_CONFIG_CI: "true"
+    # AURORA_BAZEL_CONFIG_CI: "true"
 
-    AGENT_QUEUE_SUFFIX: "staging"
+    # AGENT_QUEUE_SUFFIX: "staging"
 
     QUEUE_CAPABILITIES: {"custom": "true", "ami_id": "$AMI_ID"}
