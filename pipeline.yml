@@ -308,34 +308,37 @@
 #     QUEUE_CAPABILITIES: {"custom": "true", "ami_id": "$AMI_ID"}
 
 
+# steps:
+# - group: "Deployment Pipeline"
+#   steps:
+#   - block: "Approve Deployment"
+#     fields:
+#     - text: "Approver Name"
+#       key: "approver_name"
+#       required: true
+#     - select: "Environment"
+#       key: "environment"
+#       options:
+#       - label: "Staging"
+#         value: "staging"
+#       - label: "Production"
+#         value: "production"
+#       required: true
+
+#   - input: "Provide Deployment Details"
+#     fields:
+#     - text: "Deployment Version"
+#       key: "deployment_version"
+#       required: true
+#     - select: "Rollback Required"
+#       key: "rollback_required"
+#       options:
+#       - label: "Yes"
+#         value: "yes"
+#       - label: "No"
+#         value: "no"
+#       required: true
+
 steps:
-- group: "Deployment Pipeline"
-  steps:
-  - block: "Approve Deployment"
-    fields:
-    - text: "Approver Name"
-      key: "approver_name"
-      required: true
-    - select: "Environment"
-      key: "environment"
-      options:
-      - label: "Staging"
-        value: "staging"
-      - label: "Production"
-        value: "production"
-      required: true
-
-  - input: "Provide Deployment Details"
-    fields:
-    - text: "Deployment Version"
-      key: "deployment_version"
-      required: true
-    - select: "Rollback Required"
-      key: "rollback_required"
-      options:
-      - label: "Yes"
-        value: "yes"
-      - label: "No"
-        value: "no"
-      required: true
-
+- command: |
+    buildkite-agent meta-data get "Test-Key-Doesn't_exist" --default "Returning this value if mete-data doesn't exist"

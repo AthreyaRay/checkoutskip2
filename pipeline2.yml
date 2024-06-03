@@ -21,3 +21,8 @@
 
 # steps:
 # - command: buildkite-agent artifact download . "*.*"
+
+
+steps:
+- command: |
+    buildkite-agent meta-data get "Test-Key-Doesn't_exist" --default "Returning this value if mete-data doesn't exist"
