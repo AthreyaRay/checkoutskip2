@@ -345,6 +345,7 @@
 steps:
 - label: ":rocket: Testing bk local run"
   command: echo "local run works" && exit 1
+  cancel_on_build_failing: true
 
 - label: "testing cancel_on_build_failing"
   command: sleep 600
