@@ -339,6 +339,12 @@
 #         value: "no"
 #       required: true
 
+# steps:
+# - command: buildkite-agent meta-data get "Test-Key-Doesn't_exist" --default "Returning this value if mete-data doesn't exist"
+
 steps:
-- command: |
-    buildkite-agent meta-data get "Test-Key-Doesn't_exist" --default "Returning this value if mete-data doesn't exist"
+- label: ":rocket: Testing bk local run"
+  command: echo "local run works" && exit 1
+
+- label: "testing cancel_on_build_failing"
+  command: sleep 600
