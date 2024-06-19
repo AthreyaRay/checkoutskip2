@@ -348,3 +348,4 @@ steps:
 
 - label: "testing cancel_on_build_failing"
   command: sleep 600
+  cancel_on_build_failing: true
