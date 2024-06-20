@@ -342,11 +342,26 @@
 # steps:
 # - command: buildkite-agent meta-data get "Test-Key-Doesn't_exist" --default "Returning this value if mete-data doesn't exist"
 
-steps:
-- label: ":rocket: Testing bk local run"
-  command: echo "local run works" && exit 1
-  cancel_on_build_failing: true
+# steps:
+# - label: ":rocket: Testing bk local run"
+#   command: echo "local run works" && exit 1
 
-- label: "testing cancel_on_build_failing"
-  command: sleep 600
-  cancel_on_build_failing: true
+# - label: "testing cancel_on_build_failing"
+#   command: sleep 600
+#   cancel_on_build_failing: true
+
+
+steps:
+- label: "Build"
+  command:
+  - mkdir -p artifacts
+  - echo "Hello, Buildkite!" > artifacts/greeting.txt
+  - echo "Build step completed."
+  artifact_paths:
+  - artifacts/**/*
+
+- label: "Test"
+  command:
+  - buildkite-agent artifact download "artifacts/**/*" .
+  - cat artifacts/greeting.txt
+  - echo "Test step completed."
