@@ -362,6 +362,6 @@ steps:
 
 - label: "Test"
   command:
-  - buildkite-agent artifact download "./greeting.txt" .
+  - buildkite-agent artifact download "greeting.txt" .
   - cat greeting.txt
   - echo "Test step completed."
