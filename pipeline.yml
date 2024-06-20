@@ -355,13 +355,13 @@ steps:
 - label: "Build"
   command:
   - mkdir -p artifacts
-  - echo "Hello, Buildkite!" > artifacts/greeting.txt
+  - echo "Hello, Buildkite!" > greeting.txt
   - echo "Build step completed."
   artifact_paths:
-  - artifacts/**/*
+  - ./greeting.txt
 
 - label: "Test"
   command:
-  - buildkite-agent artifact download "artifacts/**/*" .
-  - cat artifacts/greeting.txt
+  - buildkite-agent artifact download "./greeting.txt" .
+  - cat greeting.txt
   - echo "Test step completed."
