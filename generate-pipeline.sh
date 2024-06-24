@@ -5,7 +5,7 @@ PIPELINE='{
   "steps": [
     {
       "label": "Say Hello World",
-      "command": "echo Hello, World!"
+      "command": "echo Hello, World! This is a dynamic step"
     }
   ]
 }'
