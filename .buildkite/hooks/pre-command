@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Generate the greeting.txt file
+echo "Hello, World!" > greeting.txt
+
+# Upload the greeting.txt file as an artifact
+buildkite-agent artifact upload "greeting.txt"

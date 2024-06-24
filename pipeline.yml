@@ -366,11 +366,18 @@
 #   - cat greeting.txt
 #   - echo "Test step completed."
 
+agents:
+  queue: Hosted_Agents
 steps:
-- label: ":pipeline: Generate Hello World Step"
-  command: "./generate-pipeline.sh"
+- label: "Generate Greeting"
+  command: "echo Hello, World! > greeting.txt"
+  artifact_paths: "greeting.txt"
 
-- label: ":rocket: This is next step"
-  command: echo "This is 3rd step"
+- label: "Build"
+  command: |
+    # Download greeting.txt to the current working directory (root of the repository)
+    buildkite-agent artifact download "greeting.txt" .
+    # Verify that greeting.txt is downloaded correctly
+    ls -l greeting.txt
 
 
