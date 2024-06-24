@@ -351,17 +351,26 @@
 #   cancel_on_build_failing: true
 
 
-steps:
-- label: "Build"
-  command:
-  - mkdir -p artifacts
-  - echo "Hello, Buildkite!" > greeting.txt
-  - echo "Build step completed."
-  artifact_paths:
-  - ./greeting.txt
+# steps:
+# - label: "Build"
+#   command:
+#   - mkdir -p artifacts
+#   - echo "Hello, Buildkite!" > greeting.txt
+#   - echo "Build step completed."
+#   artifact_paths:
+#   - ./greeting.txt
 
-- label: "Test"
-  command:
-  - buildkite-agent artifact download "greeting.txt" .
-  - cat greeting.txt
-  - echo "Test step completed."
+# - label: "Test"
+#   command:
+#   - buildkite-agent artifact download "greeting.txt" .
+#   - cat greeting.txt
+#   - echo "Test step completed."
+
+steps:
+- label: ":pipeline: Generate Hello World Step"
+  command: ".buildkite/generate-pipeline.sh"
+
+- label: ":rocket: This is next step"
+  command: echo "This is 3rd step"
+
+
