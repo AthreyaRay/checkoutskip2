@@ -373,9 +373,9 @@ steps:
 #   command: "echo Hello, World! > greeting.txt"
 #   artifact_paths: "greeting.txt"
 
-- label: 'Build'
-  command: -
-    echo "Building..." 
-    buildkite-agent artifact upload greeting.txt
+  - label: 'Build'
+    command: -
+      echo "Building..." 
+      buildkite-agent artifact upload greeting.txt
 
 
