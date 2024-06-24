@@ -368,7 +368,7 @@
 
 steps:
 - label: ":pipeline: Generate Hello World Step"
-  command: ".buildkite/generate-pipeline.sh"
+  command: "./generate-pipeline.sh"
 
 - label: ":rocket: This is next step"
   command: echo "This is 3rd step"
