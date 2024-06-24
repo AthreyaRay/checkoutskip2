@@ -369,9 +369,9 @@
 agents:
   queue: Hosted_Agents
 steps:
-- label: "Generate Greeting"
-  command: "echo Hello, World! > greeting.txt"
-  artifact_paths: "greeting.txt"
+# - label: "Generate Greeting"
+#   command: "echo Hello, World! > greeting.txt"
+#   artifact_paths: "greeting.txt"
 
 - label: "Build"
   command: |
