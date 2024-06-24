@@ -373,11 +373,9 @@ steps:
 #   command: "echo Hello, World! > greeting.txt"
 #   artifact_paths: "greeting.txt"
 
-- label: "Build"
-  command: |
-    # Download greeting.txt to the current working directory (root of the repository)
-    buildkite-agent artifact download "greeting.txt" .
-    # Verify that greeting.txt is downloaded correctly
-    ls -l greeting.txt
+- label: 'Build'
+  command: -
+    echo "Building..." 
+    buildkite-agent artifact upload greeting.txt
 
 
