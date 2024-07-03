@@ -389,11 +389,11 @@
 #   if: build.state == "passed"
 
 # .buildkite/pipeline.yml
+env:
+  MY_SECRET: "my-secret-value"
 steps:
 - label: "Test --reject-secrets option"
   command: "echo $MY_SECRET"
-  env:
-    MY_SECRET: "my-secret-value"
 
 
 
