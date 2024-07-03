@@ -366,14 +366,35 @@
 #   - cat greeting.txt
 #   - echo "Test step completed."
 
-agents:
-  queue: Hosted_Agents
-steps:
-# - label: "Generate Greeting"
-#   command: "echo Hello, World! > greeting.txt"
-#   artifact_paths: "greeting.txt"
+# agents:
+#   queue: Hosted_Agents
+# steps:
+# # - label: "Generate Greeting"
+# #   command: "echo Hello, World! > greeting.txt"
+# #   artifact_paths: "greeting.txt"
 
-- label: 'Build'
-  command: buildkite-agent artifact upload greeting.txt
+# - label: 'Build'
+#   command: buildkite-agent artifact upload greeting.txt
+
+# steps:
+#   - label: ":hammer: Build"
+#     command: echo "Hello Friends!"
+#   - wait
+
+#   - label: "Check Build Status and Notify"
+#     command: echo "check-and-notify.sh"
+
+# notify:
+#   slack: "@athreya"
+#   if: build.state == "passed"
+
+# .buildkite/pipeline.yml
+steps:
+- label: "Test --reject-secrets option"
+  command: "./scripts/test-secrets.sh"
+  env:
+    SECRET_ENV_VAR: "my-secret-value"
+
+
 
 
