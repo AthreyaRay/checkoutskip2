@@ -391,11 +391,9 @@
 # .buildkite/pipeline.yml
 # .buildkite/pipeline.yml
 steps:
-- label: "Initial Step - No Secrets"
-  command: echo "hi"
-
-- label: "Upload Next Step"
-  command: "buildkite-agent pipeline upload pipeline2.yml --reject-secrets"
+- label: ":hammer: Example Script"
+  command: "echo $COOL_PASSWORD"
+  artifact_paths: "artifacts/*"
 
 
 
