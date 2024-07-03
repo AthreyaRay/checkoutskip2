@@ -23,6 +23,9 @@
 # - command: buildkite-agent artifact download . "*.*"
 
 
+# .buildkite/next-step.yml
 steps:
-- command: |
-    buildkite-agent meta-data get "Test-Key-Doesn't_exist" --default "Returning this value if mete-data doesn't exist"
+- label: "Step with Secrets"
+  command: "./scripts/step-with-secrets.sh"
+  env:
+    MY_SECRET_ENV_VAR: "my-secret-value"
