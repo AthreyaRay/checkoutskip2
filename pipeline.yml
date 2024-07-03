@@ -392,7 +392,6 @@
 # .buildkite/pipeline.yml
 env:
   COOL_PASSWORD: "hahaha"
-  BUILDKITE_PIPELINE_REJECT_SECRETS: true
 steps:
 - label: ":hammer: Example Script"
   command: "echo $COOL_PASSWORD"
