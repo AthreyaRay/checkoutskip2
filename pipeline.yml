@@ -390,6 +390,8 @@
 
 # .buildkite/pipeline.yml
 # .buildkite/pipeline.yml
+env:
+  COOL_PASSWORD: "hahaha"
 steps:
 - label: ":hammer: Example Script"
   command: "echo $COOL_PASSWORD"
