@@ -393,7 +393,7 @@ steps:
 - label: "Test --reject-secrets option"
   command: "./scripts/test-secrets.sh"
   env:
-    SECRET_ENV_VAR: "my-secret-value"
+    MY_SECRET: "my-secret-value"
 
 
 
