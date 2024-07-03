@@ -28,5 +28,5 @@ env:
   MY_PASSWORD: "my-secret-value"
 steps:
 - label: "Step with Secrets"
-  command: echo "$MY_SECRET_ENV_VAR"
+  command: echo "$MY_PASSWORD"
 
