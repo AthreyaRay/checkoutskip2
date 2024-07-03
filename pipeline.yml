@@ -393,7 +393,6 @@
 steps:
 - label: ":hammer: Example Script"
   command: "echo $COOL_PASSWORD"
-  artifact_paths: "artifacts/*"
 
 
 
