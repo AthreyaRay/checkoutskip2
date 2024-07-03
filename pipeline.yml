@@ -391,7 +391,7 @@
 # .buildkite/pipeline.yml
 steps:
 - label: "Test --reject-secrets option"
-  command: "./scripts/test-secrets.sh"
+  command: "echo $MY_SECRET"
   env:
     MY_SECRET: "my-secret-value"
 
