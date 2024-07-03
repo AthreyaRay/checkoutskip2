@@ -24,8 +24,9 @@
 
 
 # .buildkite/next-step.yml
+env:
+  MY_SECRET_ENV_VAR: "my-secret-value"
 steps:
 - label: "Step with Secrets"
-  command: "./scripts/step-with-secrets.sh"
-  env:
-    MY_SECRET_ENV_VAR: "my-secret-value"
+  command: echo "hi"
+
