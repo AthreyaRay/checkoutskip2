@@ -401,8 +401,7 @@
 steps:
 - label: "Build Step"
   command: echo "$SAMPLE"
-  agents:
-    aws:instance-id: i-xxxxxxxxxxx1234
+
 
 
 
