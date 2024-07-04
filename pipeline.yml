@@ -405,7 +405,7 @@ steps:
 - label: "Build Step"
   command: echo "hi 2 hi" && sleep 30
   agents:
-    aws\:instance-id: "i-xxxxxxxxxxx"
+    aws:instance-id: i-xxxxxxxxxxx
 
 - label: "Build Step"
   command: echo "hi" && sleep 30
