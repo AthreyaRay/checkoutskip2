@@ -403,12 +403,13 @@
 #   command: echo "$SAMPLE"
 
 steps:
-- label: "Create and Upload Artifact"
+- label: "Create Artifact"
   commands:
   - echo "Hello, Buildkite!" > hello.txt
   - pwd > pwd.txt
-  - buildkite-agent artifact upload hello.txt
-  - buildkite-agent artifact upload pwd.txt
+  artifact_paths:
+  - hello.txt
+  - pwd.txt
 
 - label: "Print PWD of Artifacts"
   commands:
