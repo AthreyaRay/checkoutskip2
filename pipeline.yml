@@ -398,10 +398,22 @@
 #   command: "echo $COOL_PASSWORD"
 
 
-steps:
-- label: "Build Step"
-  command: echo "$SAMPLE"
+# steps:
+# - label: "Build Step"
+#   command: echo "$SAMPLE"
 
+steps:
+- label: "Create and Upload Artifact"
+  commands:
+  - echo "Hello, Buildkite!" > hello.txt
+  - pwd > pwd.txt
+  - buildkite-agent artifact upload hello.txt
+  - buildkite-agent artifact upload pwd.txt
+
+- label: "Print PWD of Artifacts"
+  commands:
+  - buildkite-agent artifact download pwd.txt .
+  - cat pwd.txt
 
 
 
