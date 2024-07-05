@@ -409,6 +409,7 @@ steps:
   - mkdir test1
   - cd test1
   - pwd > pwd1.txt
+  - echo "$$BUILDKITE_BUILD_CHECKOUT_PATH"
   artifact_paths:
   - hello.txt
   - pwd1.txt
