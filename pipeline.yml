@@ -406,15 +406,15 @@ steps:
 - label: "Create Artifact"
   commands:
   - echo "Hello, Buildkite!" > hello.txt
-  - pwd > pwd.txt
+  - pwd > pwd1.txt
   artifact_paths:
   - hello.txt
-  - pwd.txt
+  - pwd1.txt
 
-- label: "Print PWD of Artifacts"
-  commands:
-  - buildkite-agent artifact download pwd.txt .
-  - cat pwd.txt
+# - label: "Print PWD of Artifacts"
+#   commands:
+#   - buildkite-agent artifact download pwd.txt .
+#   - cat pwd.txt
 
 
 
