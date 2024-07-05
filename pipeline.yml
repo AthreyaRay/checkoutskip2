@@ -406,9 +406,8 @@ steps:
 - label: "Create Artifact"
   commands:
   - echo "Hello, Buildkite!" > hello.txt
-  - mkdir test1
   - cd test1
-  - pwd > pwd1.txt
+  - pwd > pwd2.txt
   - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
   artifact_paths:
   - hello.txt
