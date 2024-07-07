@@ -415,7 +415,7 @@ steps:
 
 - label: "Downlaod artifacts"
   commands:
-  - buildkite-agent artifact download /test1/abc.txt
+  - buildkite-agent artifact download test1/abc.txt
   - cat test123.txt
 
 
