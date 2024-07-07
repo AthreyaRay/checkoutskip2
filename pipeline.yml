@@ -407,16 +407,15 @@ steps:
   commands:
   - echo "Hello, Buildkite!" > hello.txt
   - cd test1
-  - pwd > pwd2.txt
+  - pwd > test123.txt
   - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
-  artifact_paths:
-  - hello.txt
-  - pwd1.txt
+  - buildkite-agent artifact upload /test1/*
 
-# - label: "Print PWD of Artifacts"
-#   commands:
-#   - buildkite-agent artifact download pwd.txt .
-#   - cat pwd.txt
+
+- label: "Downlaod artifacts"
+  commands:
+  - buildkite-agent artifact download /test1/test123
+  - cat test123.txt
 
 
 
