@@ -415,7 +415,7 @@ steps:
 - label: "Download Artifacts"
   commands:
   # Ensure the test1 directory exists
-  - buildkite-agent artifact download "test1/abc.txt" --build "018f963e-ce8b-4ba8-9aaa-4e3c973811a8" # Ensure the correct download path
+  - buildkite-agent artifact download "test1/abc.txt" . --build "018f963e-ce8b-4ba8-9aaa-4e3c973811a8" # Ensure the correct download path
   - cat test1/abc.txt # Ensure the correct path
 
 
