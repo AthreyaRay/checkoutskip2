@@ -411,6 +411,7 @@ steps:
   - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
   - ls
   - buildkite-agent artifact upload "test1/*"
+  - buildkite-agent artifact download "test1/abc.txt"
 
 
 - label: "Downlaod artifacts"
