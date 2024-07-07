@@ -407,7 +407,7 @@ steps:
   commands:
   - echo "Hello, Buildkite!" > hello.txts
   - ls
-  - pwd > test1/test123.txt
+  - pwd >> test1/test123.txt
   - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
   - ls
   - buildkite-agent artifact upload /test1/*
