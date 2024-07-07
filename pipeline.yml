@@ -406,10 +406,10 @@ steps:
 - label: "Create Artifact"
   commands:
   - echo "Hello, Buildkite!" > hello.txt
-  - cd test1
   - pwd > test123.txt
   - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
-  - buildkite-agent artifact upload ./test1/*
+  - ls
+  - buildkite-agent artifact upload /test1/*
 
 
 - label: "Downlaod artifacts"
