@@ -410,12 +410,12 @@ steps:
   - pwd >> test1/test123.txt
   - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
   - ls
-  - buildkite-agent artifact upload test1/*
+  - buildkite-agent artifact upload "test1/*"
 
 
 - label: "Downlaod artifacts"
   commands:
-  - buildkite-agent artifact download /test1/test123.txt
+  - buildkite-agent artifact download /test1/abc.txt
   - cat test123.txt
 
 
