@@ -22,7 +22,7 @@ set -ex
 trigger_build() {
   local api_token="bkua_c342bc1e8133bdbabadbe9ef3ebeb71cb6fd884f"
   local organization_slug="personal-use-4"
-  local pipeline_slug="example-pipeline"
+  local pipeline_slug="sigkill-test"
   local build_message="Triggered by another step"
   local env_var1="VALUE1"
   local env_var2="VALUE2"
