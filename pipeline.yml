@@ -402,21 +402,21 @@
 # - label: "Build Step"
 #   command: echo "$SAMPLE"
 
-steps:
-- label: "Create Artifact"
-  commands:
-  - mkdir -p test1 # Ensure the test1 directory exists
-  - echo "Hello, Buildkite!" > hello.txt
-  - pwd >> test1/test123.txt # Append pwd output to test123.txt in test1 folder
-  - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
-  - ls
-  - buildkite-agent artifact upload "test1/*"
+# steps:
+# - label: "Create Artifact"
+#   commands:
+#   - mkdir -p test1 # Ensure the test1 directory exists
+#   - echo "Hello, Buildkite!" > hello.txt
+#   - pwd >> test1/test123.txt # Append pwd output to test123.txt in test1 folder
+#   - echo "$BUILDKITE_BUILD_CHECKOUT_PATH"
+#   - ls
+#   - buildkite-agent artifact upload "test1/*"
 
-- label: "Download Artifacts"
-  commands:
-  # Ensure the test1 directory exists
-  - buildkite-agent artifact download "test1/abc.txt" . # Ensure the correct download path
-  - cat test1/abc.txt # Ensure the correct path
+# - label: "Download Artifacts"
+#   commands:
+#   # Ensure the test1 directory exists
+# - buildkite-agent artifact download "test1/abc.txt" . # Ensure the correct download path
+# - cat test1/abc.txt # Ensure the correct path
 
 
 
@@ -424,3 +424,9 @@ steps:
 # --build "018f963e-ce8b-4ba8-9aaa-4e3c973811a8"
 
 
+
+steps:
+- label: "Run conditional build trigger"
+  command: "./condition.sh"
+  env:
+    CONDITION: "true"
