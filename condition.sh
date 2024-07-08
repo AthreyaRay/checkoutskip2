@@ -17,6 +17,8 @@ JOB_ID="018e5c01-d6ca-43ce-8c88-1ea1706445a5"
 #!/bin/bash
 
 # Function to trigger a new build
+
+set -ex
 trigger_build() {
   local api_token="bkua_c342bc1e8133bdbabadbe9ef3ebeb71cb6fd884f"
   local organization_slug="personal-use-4"
