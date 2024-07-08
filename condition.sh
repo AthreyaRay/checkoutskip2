@@ -20,15 +20,15 @@ JOB_ID="018e5c01-d6ca-43ce-8c88-1ea1706445a5"
 
 set -ex
 trigger_build() {
-  local api_token="bkua_c342bc1e8133bdbabadbe9ef3ebeb71cb6fd884f"
+  local api_token="bkua_64f927c0203faa1b6ab56c3b514f1d9a244fb4eb"
   local organization_slug="personal-use-4"
   local pipeline_slug="sigkill-test"
   local build_message="Triggered by another step"
   local env_var1="VALUE1"
   local env_var2="VALUE2"
 
-  curl -X POST "https://api.buildkite.com/v2/organizations/$organization_slug/pipelines/$pipeline_slug/builds" \
-    -H "Authorization: Bearer $api_token" \
+  curl -H "Authorization: Bearer $api_token" \
+    -X POST "https://api.buildkite.com/v2/organizations/$organization_slug/pipelines/$pipeline_slug/builds" \
     -H "Content-Type: application/json" \
     -d '{
       "commit": "HEAD",
@@ -42,6 +42,6 @@ trigger_build() {
 }
 
 # Conditional logic to decide whether to trigger the build
-if [ "$CONDITION" == "true" ]; then
+if [ "true" == "true" ]; then
   trigger_build
 fi

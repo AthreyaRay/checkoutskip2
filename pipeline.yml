@@ -425,8 +425,29 @@
 
 
 
+
+
 steps:
+- block: ":mag: Build Details"
+  if: build.source != "trigger_job"
+  fields:
+  - text: "Deployable Target"
+    key: "deployable-target"
+    hint: "e.g. treasury2"
+    required: true
+  - select: "Language"
+    key: "language"
+    required: true
+    default: "py3"
+    options:
+    - label: "Python 3"
+      value: "py3"
+    - label: "Kotlin"
+      value: "kotlin"
+    - label: "Python 2"
+      value: "py2"
+
 - label: "Run conditional build trigger"
-  command: "./condition.sh"
+  command: echo "./condition.sh"
   env:
     CONDITION: "true"
