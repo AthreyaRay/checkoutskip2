@@ -13,10 +13,12 @@ PIPELINE_SLUG="skiptest123"
 BUILD_NUMBER="018e5c01-d6b9-477b-9d69-5482bcf061e8"
 JOB_ID="018e5c01-d6ca-43ce-8c88-1ea1706445a5"
 
+# curl -i -H 'Authorization: Bearer bkua_c342bc1e8133bdbabadbe9ef3ebeb71cb6fd884f' https://api.buildkite.com/v2/organizations/personal-use-4/pipelines
 
-#!/bin/bash
 
-# Function to trigger a new build
+!/bin/bash
+
+Function to trigger a new build
 
 set -ex
 trigger_build() {
@@ -42,6 +44,6 @@ trigger_build() {
 }
 
 # Conditional logic to decide whether to trigger the build
-if [ "true" == "true" ]; then
+if [ "$CONDITION" == "true" ]; then
   trigger_build
 fi
