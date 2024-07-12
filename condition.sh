@@ -1,7 +1,5 @@
 API_TOKENer="bkua_2da3209f82823f206db04c145a426167c3953b1b"
 
-API_TOKEN="bkua_64f927c0203faa1b6ab56c3b514f1d9a244fb4eb" ##this is with all access
-
 TOKEN="bkua_c342bc1e8133bdbabadbe9ef3ebeb71cb6fd884f"
 
 TOKEN1="LzWHQ5Kub9fCXGvfoNGmekXz"
