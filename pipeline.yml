@@ -452,6 +452,6 @@ steps:
 #   env:
 #     CONDITION: "true"
 
-- label: "Example step using Multiline commit message."
+- label: "Example step using Multiline commit message. Checking with Tinder's commit message."
   command: echo ${BUILDKITE_MESSAGE}
 
