@@ -1,5 +1,5 @@
 #!/bin/bash
-API_TOKEN="bkua_57c5d5324e03b00d612e200afc53a1da3846a15b"
+# API_TOKEN="" ##revoked
 ORG_SLUG="personal-use-4"
 PIPELINE_SLUG="skiptest123"
 BUILD_NUMBER="463"

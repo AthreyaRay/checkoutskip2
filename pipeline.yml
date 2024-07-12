@@ -453,8 +453,4 @@ steps:
 #     CONDITION: "true"
 
 - label: "Example step using AWS Secrets Manager"
-  plugins:
-  - seek-oss/aws-sm:
-      env:
-        MY_SECRET_ENV_VAR: "arn:aws:secretsmanager:us-east-1:253213882263:secret:testkey-2GsXZr" ### This one is the arn of your secret in secrets manager
-  command: "echo 'Hello, world! My secret is $MY_SECRET_ENV_VAR'"
+  command: echo ${BUILDKITE_MESSAGE}
