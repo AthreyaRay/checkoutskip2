@@ -434,7 +434,7 @@ steps:
 #   - text: "Deployable Target"
 #     key: "deployable-target"
 #     hint: "e.g. treasury2"
-#     required: true
+#     required: trueAWS
 #   - select: "Language"
 #     key: "language"
 #     required: true
@@ -452,5 +452,6 @@ steps:
 #   env:
 #     CONDITION: "true"
 
-- label: "Example step using AWS Secrets Manager"
+- label: "Example step using Multiline commit message"
   command: echo ${BUILDKITE_MESSAGE}
+
