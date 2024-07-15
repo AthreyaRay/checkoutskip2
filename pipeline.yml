@@ -454,4 +454,6 @@ steps:
 
 - label: "Example step using Multiline commit message. Checking with Tinder's commit message!"
   command: echo ${BUILDKITE_MESSAGE}
+- plugins:
+  - detect-clowns#v2.0.0: ~
 

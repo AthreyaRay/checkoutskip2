@@ -12,3 +12,4 @@ PIPELINE='{
 
 # Upload the dynamic pipeline to Buildkite
 echo "$PIPELINE" | buildkite-agent pipeline upload
+
