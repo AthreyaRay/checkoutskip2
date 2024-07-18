@@ -1,5 +1,7 @@
 API_TOKENer="bkua_2da3209f82823f206db04c145a426167c3953b1b"
 
+SIGNED_KEY="bkua_a26233700e2f144f92bfcaf345adddc045ffc3d2"
+
 TOKEN="bkua_c342bc1e8133bdbabadbe9ef3ebeb71cb6fd884f"
 
 TOKEN1="LzWHQ5Kub9fCXGvfoNGmekXz"
