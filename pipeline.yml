@@ -464,5 +464,5 @@ steps:
 
 
 - label: "Example step using Multiline commit message. Checking with Tinder's commit message!"
-  command: buildkite-agent secret get GITHUB_TOKEN && echo ${BUILDKITE_MESSAGE}
--
+  command: buildkite-agent secret get GITHUB_TOKEN
+
