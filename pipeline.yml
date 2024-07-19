@@ -436,7 +436,7 @@
 #   - v1-cache-{{ id }}-{{ git.commit }}
 
 
-steps:
+# steps:
 # - block: ":mag: Build Details"
 #   if: build.source != "webhook"
 #   fields:
@@ -462,7 +462,18 @@ steps:
 #     CONDITION: "true"
 
 
+steps:
+- label: "Timeout Example"
+  command: |
+    echo "This is a job step that will timeout."
+    sleep 120 # Simulate a long-running process
+    echo "This should not be reached if timeout is working."
+  timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
+  artifact_paths: "output.log"
 
-- label: "Example step using Multiline commit message. Checking with Tinder's commit message!"
-  command: buildkite-agent secret get GITHUB_TOKEN
+- label: "Generate Artifact"
+  command: |
+    echo "Generating output.log"
+    echo "This is an artifact file." > output.log
+  artifact_paths: "output.log"
 
