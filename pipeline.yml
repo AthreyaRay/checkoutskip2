@@ -468,7 +468,7 @@ steps:
     echo "This is a job step that will timeout."
     sleep 120 # Simulate a long-running process
     echo "This should not be reached if timeout is working." > output.log
-  # timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
+  timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
   artifact_paths: "output.log"
 
 - label: "Generate Artifact"
