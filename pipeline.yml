@@ -464,11 +464,7 @@
 
 steps:
 - label: "Timeout Example"
-  command: |
-    echo "This is a job step that will timeout."
-    sleep 120 # Simulate a long-running process
-    echo "This should not be reached if timeout is working." > output.log
-    # buildkite-agent artifact upload output.log
+  command: "echo \"This is a job step that will timeout.\" > output.log\nsleep 120 # Simulate a long-running process\necho \"This should not be reached if timeout is working.\" \n# buildkite-agent artifact upload output.log\n"
   timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
   artifact_paths: "output.log"
 
