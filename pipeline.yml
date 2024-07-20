@@ -463,10 +463,10 @@
 
 
 steps:
-- label: "Timeout Example"
-  command: "echo \"This is a job step that will timeout.\" > output.log\nsleep 120 # Simulate a long-running process\necho \"This should not be reached if timeout is working.\" \n# buildkite-agent artifact upload output.log\n"
-  timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
-  artifact_paths: "output.log"
+# - label: "Timeout Example"
+#   command: "echo \"This is a job step that will timeout.\" > output.log\nsleep 120 # Simulate a long-running process\necho \"This should not be reached if timeout is working.\" \n# buildkite-agent artifact upload output.log\n"
+#   timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
+#   artifact_paths: "output.log"
 
 - label: "Generate Artifact"
   command: |
@@ -474,3 +474,5 @@ steps:
     echo "This is an artifact file." > output.log
   artifact_paths: "output.log"
 
+- label: "Keyboard test :keyboard:"
+  command: echo "keyboard is working fine"
