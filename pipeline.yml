@@ -468,7 +468,7 @@ steps:
 #   timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
 #   artifact_paths: "output.log"
 
-- label: "Generate Artifact"
+- label: "Generate Artifact :alien:"
   command: |
     echo "Generating output.log"
     echo "This is an artifact file." > output.log
