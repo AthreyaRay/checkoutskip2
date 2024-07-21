@@ -469,7 +469,9 @@ steps:
 #   artifact_paths: "output.log"
 
 - label: "Generate Artifact :alien:"
-  command: "echo \"Generating output.log\"\necho \"This is an artifact file.\" \n"
+  command: |
+    echo "Generating output.log"
+    echo "This is an artifact file." > output.log
   artifact_paths: "output.log"
 
 - label: "Keyboard test :keyboard:"
