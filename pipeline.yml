@@ -478,11 +478,10 @@ steps:
 # .buildkite/pipeline.yml
 
 - label: "Run Tests"
-  command: echo "run-tests.sh"
+  command: echo "run-tests.sh" && buildkite-agent set metadata "foo" "bar"
   env:
     CUSTOM_ENV_VAR: "custom_value"
-  meta_data:
-    custom_info: "example_value"
+
 
 
 
