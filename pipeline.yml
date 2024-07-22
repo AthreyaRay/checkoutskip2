@@ -468,9 +468,22 @@ steps:
 #   timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
 #   artifact_paths: "output.log"
 
-- label: "Generate Artifact :alien:"
-  command: "echo \"Generating output.log\"\necho \"This is an artifact file.\" \n"
-  artifact_paths: "output.log"
+# - label: "Generate Artifact :alien:"
+#   command: "echo \"Generating output.log\"\necho \"This is an artifact file.\" \n"
+#   artifact_paths: "output.log"
 
-- label: "Keyboard test :keyboard:"
-  command: echo "keyboard is working fine"
+# - label: "Keyboard test :keyboard:"
+#   command: echo "keyboard is working fine"
+
+# .buildkite/pipeline.yml
+
+- label: "Run Tests"
+  command: echo "run-tests.sh"
+  env:
+    CUSTOM_ENV_VAR: "custom_value"
+  meta_data:
+    custom_info: "example_value"
+
+
+
+
