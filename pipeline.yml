@@ -462,7 +462,7 @@
 #     CONDITION: "true"
 
 
-steps:
+# steps:
 # - label: "Timeout Example"
 #   command: "echo \"This is a job step that will timeout.\" > output.log\nsleep 120 # Simulate a long-running process\necho \"This should not be reached if timeout is working.\" \n# buildkite-agent artifact upload output.log\n"
 #   timeout_in_minutes: 1 # Set a short timeout for demonstration purposes
@@ -475,10 +475,12 @@ steps:
 # - label: "Keyboard test :keyboard:"
 #   command: echo "keyboard is working fine"
 
-# .buildkite/pipeline.yml
+steps:
 
 - label: "Run Tests"
   command: echo "run-tests.sh" && buildkite-agent meta-data set "foo" "bar again"
+- trigger: "skiptest123"
+  label: ":package: Generate data"
 
 
 
