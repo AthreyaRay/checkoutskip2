@@ -479,7 +479,8 @@ steps:
 - label: "Run Tests"
   command: echo "run-tests.sh" && buildkite-agent meta-data set "foo" "bar again"
   parallelism: 2 # Adjust the number of parallel jobs as needed
-
+  -plugins:
+    -detect-clowns#v2.0.0: ~
 
 
 
