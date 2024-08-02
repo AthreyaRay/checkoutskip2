@@ -485,10 +485,7 @@
 
 steps:
 - label: ":trigger: Trigger Child Pipeline"
-  trigger: "sigkill-test"
-  build:
-    env:
-      TIMEOUT_IN_MINUTES: 3
+  commad: "hello hello"
 
 
 
